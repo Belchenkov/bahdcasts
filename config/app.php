@@ -13,7 +13,11 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Bahdcasts'),
+
+    'developers' => [
+      'belchenkov.laravel@gmail.com'
+    ],
 
     /*
     |--------------------------------------------------------------------------

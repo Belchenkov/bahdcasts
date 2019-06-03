@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/custom', function () {
+    dd(env('APP_CREATOR'));
+});
