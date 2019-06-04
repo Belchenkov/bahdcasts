@@ -34,7 +34,9 @@
             <div class="topbar-right">
                 <ul class="topbar-nav nav">
                     <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#loginModal">Login</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#loginModal">Login</a>
+                    </li>
                 </ul>
             </div>
 
@@ -49,21 +51,12 @@
 <!-- END Header -->
     <!-- Main container -->
     <main class="main-content">
-
-
-
-
         @yield('content')
-
-
-
-
-
-
     </main>
     <!-- END Main container -->
 
-<!-- Footer -->
+    <vue-login></vue-login>
+    <!-- Footer -->
     <footer class="site-footer">
         <div class="container">
             <div class="row gap-y justify-content-center">
