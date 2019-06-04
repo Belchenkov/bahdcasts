@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/custom', function () {
     dd(env('APP_CREATOR'));
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
