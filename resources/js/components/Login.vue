@@ -32,6 +32,7 @@
                     <div class="form-group">
                         <button
                                 class="btn btn-bold btn-block btn-primary"
+                                :disabled="!isValidLoginForm"
                                 type="button"
                         >Login</button>
                     </div>
@@ -54,5 +55,19 @@
                 errors: []
             }
         },
+        computed: {
+            isValidLoginForm() {
+                return this.emailIsValid() && this.password;
+            }
+        },
+        methods: {
+            emailIsValid()   {
+                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email))  {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
     }
 </script>

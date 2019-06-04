@@ -19,18 +19,14 @@
 <body>
 <div id="app">
     <!-- Topbar -->
-
     <nav class="topbar topbar-inverse topbar-expand-md topbar-sticky">
         <div class="container">
-
             <div class="topbar-left">
                 <button class="topbar-toggler">&#9776;</button>
                 <a class="topbar-brand" href="/" style="color: white;">
                     BAHDCASTS
                 </a>
             </div>
-
-
             <div class="topbar-right">
                 <ul class="topbar-nav nav">
                     <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
@@ -39,13 +35,9 @@
                     </li>
                 </ul>
             </div>
-
         </div>
     </nav>
     <!-- END Topbar -->
-
-
-
     <!-- Header -->
 @yield('header')
 <!-- END Header -->

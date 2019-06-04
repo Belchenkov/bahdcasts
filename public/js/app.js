@@ -1742,6 +1742,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1751,6 +1752,20 @@ __webpack_require__.r(__webpack_exports__);
       loading: false,
       errors: []
     };
+  },
+  computed: {
+    isValidLoginForm: function isValidLoginForm() {
+      return this.emailIsValid() && this.password;
+    }
+  },
+  methods: {
+    emailIsValid: function emailIsValid() {
+      if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   }
 });
 
@@ -37180,10 +37195,19 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _vm._m(0)
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-bold btn-block btn-primary",
+                    attrs: { disabled: !_vm.isValidLoginForm, type: "button" }
+                  },
+                  [_vm._v("Login")]
+                )
+              ])
             ]),
             _vm._v(" "),
-            _vm._m(1)
+            _vm._m(0)
           ]
         )
       ])
@@ -37191,21 +37215,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-bold btn-block btn-primary",
-          attrs: { type: "button" }
-        },
-        [_vm._v("Login")]
-      )
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
