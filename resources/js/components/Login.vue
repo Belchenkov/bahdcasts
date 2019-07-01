@@ -60,7 +60,7 @@
         },
         computed: {
             isValidLoginForm() {
-                return this.emailIsValid() && this.password;
+                return this.emailIsValid() && this.password && !this.loading;
             }
         },
         methods: {
@@ -72,6 +72,8 @@
                 }
             },
             attemptLogin() {
+                this.loading = true;
+
                 axios.post('/login', {
                     email: this.email,
                     password: this.password,
@@ -80,7 +82,10 @@
                     .then(res => {
                         location.reload();
                     })
-                    .catch(err => console.error(err));
+                    .catch(err => {
+                        this.loading = false;
+                        console.error(err);
+                    });
             }
         }
     }
