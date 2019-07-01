@@ -6,11 +6,11 @@
                 <h5 class="text-uppercase text-center">Login</h5>
                 <br><br>
                 <form>
-                    <!--<ul class="alert alert-danger" v-if="errors.length > 0">
+                    <ul class="alert alert-danger" v-if="errors.length > 0">
                         <p class="text-center" v-for="error in errors" :key="errors.indexOf(error)">
                             {{ error }}
                         </p>
-                    </ul>-->
+                    </ul>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Email" v-model="email">
                     </div>
@@ -73,6 +73,7 @@
             },
             attemptLogin() {
                 this.loading = true;
+                this.errors = [];
 
                 axios.post('/login', {
                     email: this.email,
@@ -84,7 +85,12 @@
                     })
                     .catch(err => {
                         this.loading = false;
-                        console.error(err);
+
+                        if (err.response.status == 422) {
+                            this.errors.push("We couldn't verify your account details.");
+                        } else {
+                            this.errors.push('Something went wrong');
+                        }
                     });
             }
         }

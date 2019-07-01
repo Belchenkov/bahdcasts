@@ -1774,6 +1774,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.loading = true;
+      this.errors = [];
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/login', {
         email: this.email,
         password: this.password,
@@ -1782,7 +1783,12 @@ __webpack_require__.r(__webpack_exports__);
         location.reload();
       })["catch"](function (err) {
         _this.loading = false;
-        console.error(err);
+
+        if (err.response.status == 422) {
+          _this.errors.push("We couldn't verify your account details.");
+        } else {
+          _this.errors.push('Something went wrong');
+        }
       });
     }
   }
@@ -37108,6 +37114,30 @@ var render = function() {
             _c("br"),
             _vm._v(" "),
             _c("form", [
+              _vm.errors.length > 0
+                ? _c(
+                    "ul",
+                    { staticClass: "alert alert-danger" },
+                    _vm._l(_vm.errors, function(error) {
+                      return _c(
+                        "p",
+                        {
+                          key: _vm.errors.indexOf(error),
+                          staticClass: "text-center"
+                        },
+                        [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(error) +
+                              "\n                    "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                : _vm._e(),
+              _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
                 _c("input", {
                   directives: [
