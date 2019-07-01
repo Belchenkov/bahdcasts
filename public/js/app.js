@@ -1697,6 +1697,8 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -1743,6 +1745,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1765,6 +1769,17 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         return false;
       }
+    },
+    attemptLogin: function attemptLogin() {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/login', {
+        email: this.email,
+        password: this.password,
+        remember: this.remember
+      }).then(function (res) {
+        location.reload();
+      })["catch"](function (err) {
+        return console.error(err);
+      });
     }
   }
 });
@@ -37200,7 +37215,8 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-bold btn-block btn-primary",
-                    attrs: { disabled: !_vm.isValidLoginForm, type: "button" }
+                    attrs: { disabled: !_vm.isValidLoginForm, type: "button" },
+                    on: { click: _vm.attemptLogin }
                   },
                   [_vm._v("Login")]
                 )

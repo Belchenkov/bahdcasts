@@ -34,6 +34,7 @@
                                 class="btn btn-bold btn-block btn-primary"
                                 :disabled="!isValidLoginForm"
                                 type="button"
+                                @click="attemptLogin"
                         >Login</button>
                     </div>
                 </form>
@@ -45,6 +46,8 @@
 </template>
 
 <script>
+    import axios from 'axios';
+
     export default {
         data() {
             return {
@@ -67,6 +70,17 @@
                 } else {
                     return false;
                 }
+            },
+            attemptLogin() {
+                axios.post('/login', {
+                    email: this.email,
+                    password: this.password,
+                    remember: this.remember
+                })
+                    .then(res => {
+                        location.reload();
+                    })
+                    .catch(err => console.error(err));
             }
         }
     }
