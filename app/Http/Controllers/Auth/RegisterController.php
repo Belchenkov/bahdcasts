@@ -4,7 +4,9 @@ namespace Bahdcasts\Http\Controllers\Auth;
 
 use Bahdcasts\User;
 use Bahdcasts\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
