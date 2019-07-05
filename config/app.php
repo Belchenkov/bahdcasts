@@ -13,7 +13,11 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Bahdcasts'),
+
+    'developers' => [
+      'belchenkov.laravel@gmail.com'
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -169,11 +173,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Bahdcasts\Providers\AppServiceProvider::class,
+        Bahdcasts\Providers\AuthServiceProvider::class,
+        // Bahdcasts\Providers\BroadcastServiceProvider::class,
+        Bahdcasts\Providers\EventServiceProvider::class,
+        Bahdcasts\Providers\RouteServiceProvider::class,
 
     ],
 
