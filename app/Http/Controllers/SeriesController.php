@@ -2,6 +2,8 @@
 
 namespace Bahdcasts\Http\Controllers;
 
+use Bahdcasts\Http\Requests\CreateSeriesRequest;
+use Bahdcasts\Series;
 use Illuminate\Http\Request;
 
 class SeriesController extends Controller
@@ -29,12 +31,24 @@ class SeriesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param CreateSeriesRequest $request
+     * @return void
      */
-    public function store(Request $request)
+    public function store(CreateSeriesRequest $request)
     {
-        //
+        // upload file
+        $image = $request->image->storePubliclyAs('series', str_slug($request->title));
+
+        // create series
+        Series::create([
+           'title' => $request->title,
+           'slug' => str_slug($request->title),
+           'description' => $request->description,
+           'image_url' => 'url-for-now'
+        ]);
+
+        // redirect user to a page to see all series
+        return redirect()->back();
     }
 
     /**
